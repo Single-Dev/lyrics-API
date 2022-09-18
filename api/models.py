@@ -7,8 +7,8 @@ class MyUser(AbstractUser):
 
 
 class Api(models.Model):
-    title = models.CharField(max_length=30)
     author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
     artist = models.CharField(max_length=200)
     lyrics = models.TextField(max_length=70000)
     ps = models.CharField(max_length=50, default="mrsenior.t.me")
