@@ -12,6 +12,6 @@ class Api(models.Model):
     artist = models.CharField(max_length=200)
     lyrics = models.TextField(max_length=70000)
     ps = models.CharField(max_length=50, default="mrsenior.t.me")
-    public = models.BooleanField(default=True)
+    spam = models.BooleanField(default=False)
     def __str__(self):
-        return str(f"artis - {self.artist}, status: {self.public}")
+        return str(f"artis - {self.artist}, status: {self.spam}")
