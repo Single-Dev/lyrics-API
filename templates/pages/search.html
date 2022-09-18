@@ -1,0 +1,19 @@
+{% if api %}
+
+{% for a in api %}
+{
+    "is_public":"{{ a.public }}",
+    "author": "{{ a.author }}",
+    "artist":"{{ a.artist }}",
+    "lyrics": "{{ a.lyrics }}",
+    "PS":"{{ a.ps }}"
+}
+{% endfor %}
+{%endif %}
+
+{% if not api  %}
+{
+    "search":"{{ get }}",
+    "results":"None"
+}
+{% endif %}
