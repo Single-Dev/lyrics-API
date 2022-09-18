@@ -3,5 +3,21 @@
 <form method="post">
     {% csrf_token %}
     {{ form }}
+    <button type="submit">add</button>
 </form>
+
+<script>
+    let autor = document.querySelector('#id_author')
+        let options = autor.querySelectorAll('option')
+
+        options.forEach(function (item) {
+            if (item.innerHTML == '{{ request.user.username }}') {
+                item.selected = true
+            }
+            else {
+                item.remove()
+            }
+        })
+
+</script>
 {% endblock content %}

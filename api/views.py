@@ -26,7 +26,7 @@ def form_save(request):
         form = AddApiForm(request.POST)
         if form.is_valid():
             form.save()
-        return  redirect('furn:succses')
+        return  redirect('app:succses')
     else:
         form = AddApiForm()
     
