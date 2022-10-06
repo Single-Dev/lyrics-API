@@ -1,9 +1,12 @@
+from django.contrib.auth.forms import UserCreationForm, UsernameField, UserChangeForm
+from django.contrib.auth.views import get_user_model
 from django import forms
-from dataclasses import fields
 from .models import *
 
 
-class AddApiForm(forms.ModelForm):
+User = get_user_model()
+class SignUpForm(UserCreationForm):
     class Meta:
-        model = Api
-        fields = ['title', 'artist', "lyrics", "ps", "author"]
+        model = User
+        fields = ("first_name", "username")
+        field_classes = {"username": UsernameField}
