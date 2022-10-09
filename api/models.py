@@ -6,12 +6,11 @@ class MyUser(AbstractUser):
     is_agent = models.BooleanField(default=False)
 
 
-class LyricsApi(models.Model):
+class Lyrics(models.Model):
     author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    artist = models.CharField(max_length=30)
     title = models.CharField(max_length=30)
-    artist = models.CharField(max_length=200)
-    lyrics = models.TextField(max_length=70000)
-    ps = models.CharField(max_length=50)
-    spam = models.BooleanField(default=False)
+    lyrics = models.TextField(max_length=7000)
+
     def __str__(self):
-        return str(f"artis - {self.artist}, status: {self.spam}")
+        return f"post by {self.author}"
