@@ -53,6 +53,14 @@ def DeleteLyricsAPI(request, pk):
     lyrics.delete()
     return Response("o'chirdiz")
 
+class LyricsSearch(generics.ListAPIView):
+    queryset = Lyrics.objects.all()
+    serializer_class = LyricsAPI
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['artist', 'title']
+
+lyricsSearch = LyricsSearch.as_view()
+
 class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'
     form_class = SignUpForm

@@ -10,5 +10,6 @@ urlpatterns = [
     path("update-api/<int:pk>/", EditLyricsAPI, name="edit_lyrics_api"),
     path("api/<int:pk>/", LyricsSingleApiView, name="sing_api"),
     path("delete-api/<int:pk>/", DeleteLyricsAPI, name="delete_lyrics_api"),
+    path("search-api/", lyricsSearch, name="lyrics_search"),
     path('submit-succses/', SuccsesView.as_view(), name="succses"),
 ]   
