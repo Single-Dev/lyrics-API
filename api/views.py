@@ -13,12 +13,45 @@ from rest_framework import permissions, filters, generics
 def home(request):
     return render(request, "pages/home.html")
 
+# Lyrics API
 @api_view(["GET"])
 @permission_classes((permissions.AllowAny, ))
 def LyricsApiView(request):
     lyrics = Lyrics.objects.all()
     serializer = LyricsAPI(lyrics, many=True)
     return Response(serializer.data)
+# Lyrics Single API
+@api_view(["GET"])
+@permission_classes((permissions.AllowAny, ))
+def LyricsSingleApiView(request, pk):
+    lyrics = Lyrics.objects.get(id=pk)
+    serializer = LyricsAPI(lyrics, many=False)
+    return Response(serializer.data)
+
+# Craete Lyrics API
+@api_view(["POST"])
+@permission_classes((permissions.AllowAny, ))
+def AddLyricsAPI(request):
+    serializer = LyricsAPI(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+@api_view(["POST"])
+@permission_classes((permissions.AllowAny, ))
+def EditLyricsAPI(request, pk):
+    lyrics = Lyrics.objects.get(id=pk)
+    serializer = LyricsAPI(instance=lyrics,data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+@api_view(["DELETE"])
+@permission_classes((permissions.AllowAny, ))
+def DeleteLyricsAPI(request, pk):
+    lyrics = Lyrics.objects.get(id=pk)
+    lyrics.delete()
+    return Response("o'chirdiz")
 
 class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'

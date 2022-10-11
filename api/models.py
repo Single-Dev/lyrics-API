@@ -7,10 +7,10 @@ class MyUser(AbstractUser):
 
 
 class Lyrics(models.Model):
-    author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    author_id = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     artist = models.CharField(max_length=30)
     title = models.CharField(max_length=30)
     lyrics = models.TextField(max_length=7000)
 
     def __str__(self):
-        return f"post by {self.author}"
+        return f"post by {self.author_id}"
