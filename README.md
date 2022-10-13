@@ -16,5 +16,5 @@ https://lyrics-api-master.herokuapp.com/apis/
     }
 ### View Single API:
     https://lyrics-api-master.herokuapp.com/api/{id}/
-### Search in API:
+### Search API:
     https://lyrics-api-master.herokuapp.com/search-api/?search={query}
